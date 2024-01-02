@@ -6,6 +6,113 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table border="1">
+        <tr>
+            <th>
+                Kode
+            </th>
+            <th>
+                Nama Barang
+            </th>
+            <th>
+                Harga
+            </th>
+        </tr>
+        <tr>
+            <td>
+                001
+            </td>
+            <td>
+                A
+            </td>
+            <td>
+                10000
+            </td>
+        </tr>
+        <tr>
+            <td>
+                002
+            </td>
+            <td>
+                B
+            </td>
+            <td>
+                20000
+            </td>
+        </tr>
+        <tr>
+            <td>
+                003
+            </td>
+            <td>
+                C
+            </td>
+            <td>
+                30000
+            </td>
+        </tr>
+    </table>
+
+    <h1>Inputan User</h1>
+
+    <table border="1">
+        <tr>
+            <td>
+                Masukkan Kode
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                <input type="text"  id="kode">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Banyaknya Barang
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                <input type="text"  id="quantity">  
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button type="submit" onclick="countQuantity()">Submit</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        barang = {
+                "001":{"name":"A", "price":10000},
+                "002":{"name":"B", "price":20000},
+                "003":{"name":"C", "price":30000}
+            }
+
+        function countQuantity(){
+            const kodeNum = document.getElementById("kode").value;
+            if (kodeNum in barang){
+                const quantity = document.getElementById("quantity").value;
+                let theKode = barang[kodeNum];
+                let priceKode = theKode["price"]
+                let total = priceKode*quantity;
+                alert("Total payment: "+total);
+                
+                let userMoney = prompt("Insert User Money :");
+
+                if (userMoney>=total){
+                    change = userMoney-total
+                    alert ("Your change is :" + change);
+                }else{
+                    alert("You have insufficient amount of money!")
+                }
+            }else{
+                alert("Please insert the right code!")
+            }
+        }
+    </script>
 </body>
 </html>
